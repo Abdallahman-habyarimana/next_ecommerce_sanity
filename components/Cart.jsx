@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
+import Image from 'next/image'
 import { AiOutlineMinus, AiOutlineLeft, AiOutlineShopping, AiOutlinePlus } from 'react-icons/ai'
 import { TiDeleteOutline } from 'react-icons/ti'
 import { useStateContext } from '../context/StateContext';
@@ -49,7 +50,7 @@ const Cart = () => {
             <div className="empty-cart">
               <AiOutlineShopping size={150} />
               <h3>Your shopping bag is empty</h3>
-              <Link href="/">
+              <Link href="/" passHref>
                 <button type="button" onClick={() => setShowCart(false)} className="btn">
                   Continue shopping
                 </button>
@@ -61,7 +62,7 @@ const Cart = () => {
             {
               cartItems.length >= 1 && cartItems.map((item) => (
                 <div className="product" key={item._id}>
-                  <img src={urlFor(item?.image[0])} className="cart-product-image" alt={item.name} />
+                  <Image src={urlFor(item?.image[0])} className="cart-product-image" alt={item.name} layout="fill" />
                   <div className="item-desc">
                     <div className="flex top">
                       <h5>{item.name}</h5>
